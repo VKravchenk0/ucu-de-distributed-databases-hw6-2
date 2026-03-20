@@ -1,4 +1,4 @@
-# Distributed databases homework 5. Cassandra.
+# Distributed databases homework 6. Neo4j.
 Використовується клієнт з домашньої роботи №1
 
 ## 1. Попередні вимоги
