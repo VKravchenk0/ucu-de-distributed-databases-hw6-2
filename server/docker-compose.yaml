@@ -1,0 +1,34 @@
+services:
+
+  server:
+    build: .
+    container_name: dd-server-neo4j
+    depends_on:
+      neo4j-counter-db:
+        condition: service_healthy
+    environment:
+      SPRING_NEO4J_URI: bolt://neo4j-counter-db:7687
+    ports:
+      - "8080:8080"
+    
+  neo4j-counter-db:
+    image: neo4j:latest
+    container_name: neo4j-counter-db
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password123
+      NEO4J_PLUGINS: '["apoc"]'
+    volumes:
+      - neo4j_counter_db_data:/data
+      - neo4j_counter_db_logs:/logs
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "password123", "RETURN 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  neo4j_counter_db_data:
+  neo4j_counter_db_logs:

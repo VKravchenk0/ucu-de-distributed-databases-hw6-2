@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: hw6
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: password123
+
+management.endpoints.web.exposure.include: mappings,health
+
+logging:
+  level:
+    org.springframework.boot.context.config: DEBUG
+
+server:
+  port: 8080
