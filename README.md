@@ -1,4 +1,4 @@
-# Distributed databases homework 6. Neo4j.
+# Distributed databases homework 6. Neo4j. Частина 2 - counter
 Використовується клієнт з домашньої роботи №1
 
 ## 1. Попередні вимоги
